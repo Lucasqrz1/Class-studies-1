@@ -1,22 +1,26 @@
 from datetime import date
-class pessoa:
+
+class Pessoa:
     def __init__(self, nome, idade):
         self.nome = nome
         self.idade = idade
-    # um metodo de classe para criar
-    # um objeto pesssoa a partir do ano de nascimento
+
+    # Método de classe para criar objeto a partir do ano de nascimento
     @classmethod
-    def apartiranonasc(cls,nome,ano):
-        return cls(nome, date.today().year - ano)
-    #metodo estático para verificar se é maior de idade
+    def a_partir_ano_nascimento(cls, nome, ano_nascimento):
+        idade = date.today().year - ano_nascimento
+        return cls(nome, idade)
+
+    # Método estático para verificar se é maior de idade
     @staticmethod
-    def ehmaior(idade):
+    def eh_maior_idade(idade):
         return idade >= 18
-pessoa1 = pessoa ('Ventury', 62)
-print(pessoa1.nome)
-print (pessoa1.idade)
-print(pessoa.ehmaior(pessoa1.idade))
-pessoa2 = pessoa.apartiranonasc('LUG',2013)
-print(pessoa2.nome)
-print (pessoa2.idade)
-print(pessoa.ehmaior(pessoa2.idade))
+
+# Exemplo de uso
+pessoa1 = Pessoa('Ventury', 62)
+print(f"{pessoa1.nome} tem {pessoa1.idade} anos.")
+print("Maior de idade?" , Pessoa.eh_maior_idade(pessoa1.idade))
+
+pessoa2 = Pessoa.a_partir_ano_nascimento('LUG', 2013)
+print(f"{pessoa2.nome} tem {pessoa2.idade} anos.")
+print("Maior de idade?" , Pessoa.eh_maior_idade(pessoa2.idade))
